@@ -1,3 +1,5 @@
+import { Util } from "./Util";
+
 export class Personagem{
     nome:string = "";
     classe:string = "";
@@ -24,6 +26,7 @@ constructor(nome: string){
     this.poderAtaque = 0;
     }
 treinarPoderAtaque(): void {
-    this.poderAtaque += 3 + this.poderAtaque *1.1;
-}
+    const incrementoTreino: number = Util.gerarNumeroAleatorio(5, 15);
+    this.poderAtaque += incrementoTreino + this.poderAtaque *1.1;
+    }
 }
