@@ -29,4 +29,8 @@ treinarPoderAtaque(): void {
     const incrementoTreino: number = Util.gerarNumeroAleatorio(5, 15);
     this.poderAtaque += incrementoTreino + this.poderAtaque *1.1;
     }
+
+    estaVivo() {
+       return (this.vidaAtual > 0)
+    }
 }
