@@ -25,6 +25,12 @@ constructor(nome: string){
     this.vidaMaxima = 0;
     this.poderAtaque = 0;
     }
+
+subirNivel(): void {
+    const elevarNivel: number = Util.gerarNumeroAleatorio(1, 8);
+    this.nivel += elevarNivel + this.nivel *1.2;
+}
+
 treinarPoderAtaque(): void {
     const incrementoTreino: number = Util.gerarNumeroAleatorio(5, 15);
     this.poderAtaque += incrementoTreino + this.poderAtaque *1.1;

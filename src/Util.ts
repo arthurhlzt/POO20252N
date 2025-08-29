@@ -14,6 +14,10 @@ export class Util {
     static gerarEmail(nomeDoUsuario: string){
         return faker.internet.email({ firstName: nomeDoUsuario });
     }
+
+    static subirNivel(nivelAtual:number, novoNivel: number):number { 
+        return novoNivel + (Math.random() * (novoNivel - nivelAtual))
+}
 }
 for(let index = 0; index < 10; index++){
     const nome = Util.gerarNome()
