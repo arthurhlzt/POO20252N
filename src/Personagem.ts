@@ -1,0 +1,57 @@
+import { Util } from "./Util";
+
+export class Personagem{
+    nome:string = "";
+    classe:string = "";
+    raca:string = "";
+    nivel:number = 0;
+    arma:string = "";
+    manaAtual:number = 0;
+    manaMaxima:number = 0;
+    vidaAtual:number = 0;
+    vidaMaxima:number = 0;
+    poderAtaque:number = 0;
+
+
+constructor(nome: string){
+    this.nome = nome;
+    this.classe = "";
+    this.raca = "";
+    this.nivel = 0;
+    this.arma = "";
+    this.manaAtual = 0;
+    this.manaMaxima = 0;
+    this.vidaAtual = 0;
+    this.vidaMaxima = 0;
+    this.poderAtaque = 0;
+    }
+
+subirNivel(): void {
+    const elevarNivel: number = Util.gerarNumeroAleatorio(1, 8);
+    this.nivel += elevarNivel + this.nivel *1.2;
+}
+
+treinarPoderAtaque(): void {
+    const incrementoTreino: number = Util.gerarNumeroAleatorio(5, 15);
+    this.poderAtaque += incrementoTreino + this.poderAtaque *1.1;
+    }
+
+    estaVivo() {
+        return (this.vidaAtual > 0)
+    }
+    regenerarMana(): void {
+        const regenMana: number = this.manaMaxima * 0.2;
+        this.manaAtual += regenMana;
+        if (this.manaAtual > this.manaMaxima) {
+            this.manaAtual = this.manaMaxima;
+            }
+        }
+        
+        novaArma(): void {
+            this.arma = Util.gerarNovaArma();
+        }
+
+        lancarFeitico(custoMana: number, tipoFeitico?: string): boolean {
+            return Util.lancarFeiticoAleatorio(this.manaAtual, custoMana);
+        }
+}
