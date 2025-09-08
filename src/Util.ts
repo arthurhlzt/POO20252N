@@ -18,6 +18,21 @@ export class Util {
     static subirNivel(nivelAtual:number, novoNivel: number):number { 
         return novoNivel + (Math.random() * (novoNivel - nivelAtual))
 }
+    static gerarNovaArma(): string {
+        const armas: string[] = ["Espada", "Machado", "Arco e Flecha", "Cajado", "Adaga", "Martelo", "Lança", "Foice"];
+        const indiceAleatorio = Math.floor(Math.random() * armas.length);
+        return armas[indiceAleatorio]!;
+    }
+    static lancarFeiticoAleatorio(manaAtual: number, custoMana: number): boolean {
+        const feiticos: string[] = ["Bola de Fogo", "Raio", "Cura", "Escudo Mágico", "Teletransporte"];
+        if (manaAtual >= custoMana) {
+        manaAtual -= custoMana;
+        const indiceAleatorio = Math.floor(Math.random() * feiticos.length);
+        console.log(`Feitiço lançado: ${feiticos[indiceAleatorio]}`);
+        return true;
+    }
+    return false;
+}
 }
 for(let index = 0; index < 10; index++){
     const nome = Util.gerarNome()

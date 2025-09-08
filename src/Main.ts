@@ -22,6 +22,9 @@ console.log("+------------MENU---------------+");
 console.log("| 1 - Subir Nivel               |");
 console.log("| 2 - Treinar Poder de Ataque   |");
 console.log("| 3 - Checar se personagem vive |");
+console.log("| 4 - Regenerar mana            |");
+console.log("| 5 - Equipar arma              |");
+console.log("| 6 - Lançar Feitiço            |");
 console.log("| 8 - Ver Status                |");
 console.log("| 9 - Sair                      |");
 console.log("+-------------------------------+");
@@ -36,9 +39,11 @@ switch (escolha) {
         p.nivel += 1;
         console.log(`O personagem ${p.nome} subiu para o nível ${p.nivel}`);
         break;
+
     case 2:
         treinarPoderAtaque(p);
         break;
+
         case 3:
             console.log(p.estaVivo()? "Personagem está vivo!" : "Personagem está morto!")
             if(p.estaVivo()){
@@ -46,6 +51,30 @@ switch (escolha) {
             } else {
                 console.log("Personagem está morto!");
             } 
+            break;
+
+        case 4:
+            p.regenerarMana();
+            console.log(`O personagem ${p.nome} regenerou mana. Mana atual: ${p.manaAtual}/${p.manaMaxima}`);
+            break;
+
+        case 5:
+            p.novaArma();
+            console.log(`O personagem ${p.nome} equipou uma nova arma: ${p.arma}`);
+            break;
+
+        case 6:
+            const custoMana: number = 20;
+            const feiticos: string[] = ["Bola de Fogo", "Raio", "Cura", "Escudo Mágico", "Teletransporte"];
+            const lancarFeitico = p.lancarFeitico(custoMana);
+            if (lancarFeitico) {
+                p.manaAtual -= custoMana;
+                console.log(`Feitiço lançado! Mana restante: ${p.manaAtual}/${p.manaMaxima}`);
+            } else {
+                console.log("Mana insuficiente para lançar o feitiço.");
+            }
+            break;
+
         case 8:
             console.table(p);
             break;

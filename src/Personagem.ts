@@ -37,6 +37,21 @@ treinarPoderAtaque(): void {
     }
 
     estaVivo() {
-       return (this.vidaAtual > 0)
+        return (this.vidaAtual > 0)
     }
+    regenerarMana(): void {
+        const regenMana: number = this.manaMaxima * 0.2;
+        this.manaAtual += regenMana;
+        if (this.manaAtual > this.manaMaxima) {
+            this.manaAtual = this.manaMaxima;
+            }
+        }
+        
+        novaArma(): void {
+            this.arma = Util.gerarNovaArma();
+        }
+
+        lancarFeitico(custoMana: number, tipoFeitico?: string): boolean {
+            return Util.lancarFeiticoAleatorio(this.manaAtual, custoMana);
+        }
 }
